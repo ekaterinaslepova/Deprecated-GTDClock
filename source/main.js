@@ -26,6 +26,7 @@
         pane.height = pane.parentElement.clientHeight;
 
         ctx.lineWidth = 5;
+        ctx.strokeStyle = "#414A6B";
         ctx.translate(pane.width / 2, pane.height / 2);
 
         return ctx;
@@ -131,6 +132,9 @@
             pane.width = bg_pane.width = pane.parentElement.clientWidth;
             pane.height = bg_pane.height = pane.parentElement.clientHeight;
 
+            ctx.strokeStyle = "#414A6B";
+            ctx.lineWidth = 5;
+            bg_ctx.lineWidth = 5;
             ctx.translate(pane.width / 2, pane.height / 2);
             bg_ctx.translate(pane.width / 2, pane.height / 2);
         };

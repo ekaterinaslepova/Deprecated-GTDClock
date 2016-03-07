@@ -35,5 +35,5 @@ html, .row{
 .dropdown-menu > li > a:hover {
     height: 100%;
     background: rgb(65, 74, 107);
-    color: white;
+    color: rgb(255, 255, 255);
 }

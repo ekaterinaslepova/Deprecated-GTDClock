@@ -64,6 +64,7 @@ Clock.prototype._drawHand = function(pos, length, width) {
     this.ctx.rotate(-Math.PI/2);
     this.ctx.lineWidth = width;
     this.ctx.lineCap = "round";
+    this.ctx.strokeStyle = "#000";
     this.ctx.rotate(pos);
     this.ctx.moveTo(0,0);
     this.ctx.lineTo(length, 0);
