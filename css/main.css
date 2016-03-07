@@ -4,43 +4,26 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-image: url("../image/fabric.png");
 }
 
-#clock-pane {
-    /*z-index: 0;*/
-    position: absolute;
-    left:0;
-    right:0;
-    top:0
+html, .row{
+    height: 100%;
+}
+
+.row {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.activity-ico {
+    float: right;
+    max-width: 50px;
+    max-height: 50px;
 }
 
 #pane {
-    /*z-index: 10;*/
-    position: absolute;
-}
-
-#edit_icon {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    z-index:10;
-    color:white;
-}
-
-#menu {
-    position:absolute;
-    top:0;
-    left:0;
-    /*right:0;*/
-    /*bottom:0;*/
-    width: 20%;
-    height: 100%;
-    z-index:10;
-    background-color:blueviolet;
-}
-
-.hidden {
-    display: none;
+    background: linear-gradient(to bottom, rgb(219, 255, 255), white);
+    border: 2px solid rgb(65, 74, 107);
+    border-radius: 5px;
 }

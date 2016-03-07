@@ -22,8 +22,8 @@
         var pane = document.getElementById('pane'),
             ctx = pane.getContext("2d");
 
-        pane.width = window.innerWidth;
-        pane.height = window.innerHeight;
+        pane.width = pane.parentElement.clientWidth;
+        pane.height = pane.parentElement.clientHeight;
 
         ctx.lineWidth = 5;
         ctx.translate(pane.width / 2, pane.height / 2);
@@ -32,11 +32,12 @@
     }
 
     function initBackgroundCanvas() {
-        var pane = document.createElement('canvas'),
-            ctx = pane.getContext("2d");
+        var pane = document.getElementById('pane'),
+            bckg_pane = document.createElement('canvas'),
+            ctx = bckg_pane.getContext("2d");
 
-        pane.width = window.innerWidth;
-        pane.height = window.innerHeight;
+        bckg_pane.width = pane.width;
+        bckg_pane.height = pane.height;
 
         ctx.lineWidth = 5;
         ctx.translate(pane.width / 2, pane.height / 2);
@@ -45,21 +46,9 @@
     }
 
     function initMenu() {
-        var pane = document.getElementById('pane'),
-            editIcon = document.getElementById('edit_icon'),
-            addBtn = document.getElementById('add'),
+        var addBtn = document.getElementById('add'),
             removeBtn = document.getElementById('remove'),
-            drawBtn = document.getElementById('draw');
-
-        //pane.addEventListener('click', function() {
-        //    var menu = document.getElementById('menu');
-        //    menu.classList.add('hidden');
-        //});
-
-        editIcon.addEventListener('click', function() {
-            var menu = document.getElementById('menu');
-            menu.classList.remove('hidden');
-        });
+            drawBtn = document.getElementById('activity');
 
         addBtn.addEventListener('click', function() {
             controller.addSector();
@@ -69,8 +58,12 @@
             controller.removeSector();
         });
 
-        drawBtn.addEventListener('click', function() {
-            controller.addActivity();
+        drawBtn.addEventListener('click', function(event) {
+            var node = event.target;
+            if (node.tagName == 'IMG') {
+                node = node.parentNode;
+            }
+            controller.addActivity(node.id);
         });
     }
 
@@ -89,15 +82,15 @@
             allowToMove = true;
 
         pane.addEventListener('click', function(event) {
-            var pixel = bg_ctx.getImageData(event.x, event.y, 1, 1).data;
+            var pixel = bg_ctx.getImageData(event.offsetX, event.offsetY, 1, 1).data;
             if (pane.style.cursor == 'pointer' && controller.isSelectable(pixel)) {
-                controller.selectSector(event.clientX, event.clientY);
+                controller.selectSector(event.offsetX, event.offsetY);
             }
         });
 
         pane.addEventListener('mousedown', function (event) {
             mousedown = true;
-            controller.activateMove(event.clientX, event.clientY);
+            controller.activateMove(event.offsetX, event.offsetY);
         });
 
         pane.addEventListener('mouseup', function () {
@@ -109,7 +102,7 @@
             if (mousedown) {
                 if (pane.style.cursor == 'move') {
                     if (allowToMove === true) {
-                        controller.moveSector(event.clientX, event.clientY);
+                        controller.moveSector(event.offsetX, event.offsetY);
                         allowToMove = false;
                         setTimeout(function() {
                             allowToMove = true;
@@ -118,7 +111,7 @@
                 }
             }
             else {
-                var pixel = bg_ctx.getImageData(event.x, event.y, 1, 1).data;
+                var pixel = bg_ctx.getImageData(event.offsetX, event.offsetY, 1, 1).data;
                 if (controller.isSelectable(pixel)) {
                     pane.style.cursor = 'pointer';
                 }
@@ -130,6 +123,17 @@
                 }
             }
         });
+
+        window.onresize = function() {
+            var pane = ctx.canvas,
+                bg_pane = bg_ctx.canvas;
+
+            pane.width = bg_pane.width = pane.parentElement.clientWidth;
+            pane.height = bg_pane.height = pane.parentElement.clientHeight;
+
+            ctx.translate(pane.width / 2, pane.height / 2);
+            bg_ctx.translate(pane.width / 2, pane.height / 2);
+        };
     }
 
     init();

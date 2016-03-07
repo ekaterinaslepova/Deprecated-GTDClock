@@ -77,7 +77,7 @@ SectorView.prototype._drawActiveSector = function() {
     }
 
     this.context.beginPath();
-    this.context.fillStyle = "#FFB6C1";
+    this.context.fillStyle = "#FF8040";
     this.context.moveTo(0, 0);
     this.context.arc(0, 0, 200, start-0.5*Math.PI, end-0.5*Math.PI);
     this.context.fill();

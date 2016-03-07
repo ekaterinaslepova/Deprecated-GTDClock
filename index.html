@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>My daily life</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" >
 </head>
 <body>
 
-<canvas id="pane"></canvas>
-
-<img id="edit_icon" src="image/edit.png">
-<div id="menu" class="hidden">
-    <p><button id="add">Add</button></p>
-    <p><button id="remove">Remove</button></p>
-    <p><button id="draw">Draw</button></p>
+<div class="row">
+    <div class="btn-group btn-group-lg btn-group-justified">
+        <a href="#" class="btn btn-primary" id="add">Split</a>
+        <a href="#" class="btn btn-primary" id="remove">Remove</a>
+        <div class="btn-group btn-group-lg">
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Activity <span class="caret"></span></a>
+            <ul class="dropdown-menu" id="activity">
+                <li><a href="#" id="lunch">Lunch  <img src="image/dish.png" class="activity-ico"></a></li>
+                <li><a href="#" id="rest">Rest  <img src="image/coffe-cup.png" class="activity-ico"></a></li>
+                <li><a href="#" id="sleep">Sleep  <img src="image/night.png" class="activity-ico"></a></li>
+                <li><a href="#" id="study">Study  <img src="image/exam.png" class="activity-ico"></a></li>
+                <li><a href="#" id="work">Work  <img src="image/money-bag.png" class="activity-ico"></a></li>
+            </ul>
+        </div>
+    </div>
+    <canvas id="pane"></canvas>
 </div>
 
 <script src="source/SectorModel.js"></script>

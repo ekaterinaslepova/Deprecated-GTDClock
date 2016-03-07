@@ -75,8 +75,27 @@ SectorController.prototype.isSelectable = function(pixel) {
     return this.selectableIdSet.indexOf(id) !== -1;
 };
 
-SectorController.prototype.addActivity = function() {
-    var activity = new Activity('image/flower.jpg', this.model.getActiveSector());
+SectorController.prototype.addActivity = function(activityId) {
+    var imgSource, activity;
+    switch (activityId) {
+        case 'lunch':
+            imgSource = "image/dish.png";
+            break;
+        case 'rest':
+            imgSource = "image/coffe-cup.png";
+            break;
+        case 'sleep':
+            imgSource = "image/night.png";
+            break;
+        case 'study':
+            imgSource = "image/exam.png";
+            break;
+        case 'work':
+            imgSource = "image/money-bag.png";
+            break;
+    }
+
+    activity = new Activity(imgSource, this.model.getActiveSector());
     this.model.addActivity(activity);
 };
 
