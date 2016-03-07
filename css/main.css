@@ -27,3 +27,13 @@ html, .row{
     border: 2px solid rgb(65, 74, 107);
     border-radius: 5px;
 }
+
+.dropdown-menu > li{
+    height: 60px;
+}
+
+.dropdown-menu > li > a:hover {
+    height: 100%;
+    background: rgb(65, 74, 107);
+    color: white;
+}
