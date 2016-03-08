@@ -23,7 +23,7 @@
             ctx = pane.getContext("2d");
 
         pane.width = pane.parentElement.clientWidth;
-        pane.height = pane.parentElement.clientHeight;
+        pane.height = pane.parentElement.clientHeight-55;
 
         ctx.lineWidth = 5;
         ctx.strokeStyle = "#414A6B";
@@ -38,7 +38,7 @@
             ctx = bckg_pane.getContext("2d");
 
         bckg_pane.width = pane.width;
-        bckg_pane.height = pane.height;
+        bckg_pane.height = pane.height-55;
 
         ctx.lineWidth = 5;
         ctx.translate(pane.width / 2, pane.height / 2);
@@ -130,7 +130,7 @@
                 bg_pane = bg_ctx.canvas;
 
             pane.width = bg_pane.width = pane.parentElement.clientWidth;
-            pane.height = bg_pane.height = pane.parentElement.clientHeight;
+            pane.height = bg_pane.height = pane.parentElement.clientHeight-55;
 
             ctx.strokeStyle = "#414A6B";
             ctx.lineWidth = 5;
